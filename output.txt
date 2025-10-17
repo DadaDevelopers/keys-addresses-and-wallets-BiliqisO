@@ -1,0 +1,30 @@
+mhGZUBfrN8pubjttMT73TcR55Xy28SLida
+bcrt1q8qxempv5ezs6hfe2tvkr92ss6ztkpny6xw8eac
+bcrt1pt98lls0y9gtycedmk3eyt85th04w27c8tnygtsypxxvdlhhtpd5qeczay8
+
+2. Hardened and Non-hardened keys refer to different derivation methods in HD wallets;
+they both use a derivation index.
+Non-Hardened Keys (Normal Derivation)
+- Symbol: regular index number, e.g., m/0/1/2
+- Can derive public keys independently; you can derive child public keys from a
+parent public key without needing the private key.
+- Use case: useful when you want to generate receiving addresses on a
+watch-only wallet or public server
+- Risk: if a child’s private key is compromised and the parent's public key is known,
+an attacker can derive the parent’s private key and all the sibling keys
+Hardened Keys (Hardened Derivation)
+- Symbol: Apostrophe or ‘h’ after number (e.g., m/44’/0’/0’ or m/44h/0h/0h)
+- Requires private key: You must have the parent private key to derive child keys
+- Use cases: Used for account-level separation and security-critical derivations
+- Security: If a child private key is compromised, the parent private key remains
+safe
+
+3. Why should a wallet developer prefer deterministic wallets over non-deterministic
+wallets
+In a deterministic wallet;
+- One backup covers infinite keys
+- Users can't lose funds due to missed backups
+- Compatible with modern standards (BIP32/39/44)
+- Enables advanced features (watch-only, multisig, hardware wallets)
+- Better UX - users only manage a seed phrase
+- Industry standard - what users expect
